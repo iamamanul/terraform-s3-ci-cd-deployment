@@ -9,6 +9,12 @@ terraform {
       version = "~> 3.0"
     }
   }
+
+  backend "s3" {
+    bucket = "state-file-store-bucket-9498"
+    key    = "backend.tfstate"
+    region = "us-east-1"
+  }
 }
 
 provider "aws" {
@@ -23,6 +29,7 @@ resource "aws_s3_bucket" "mywebapp-bucket" {
   bucket = "mywebapp-bucket-${random_id.rand_id.hex}"
 }
 
+#  Disable S3 block public access so we can apply a public bucket policy
 resource "aws_s3_bucket_public_access_block" "example" {
   bucket = aws_s3_bucket.mywebapp-bucket.id
 
@@ -32,22 +39,23 @@ resource "aws_s3_bucket_public_access_block" "example" {
   restrict_public_buckets = false
 }
 
+# Add depends_on to ensure policy is attached *after* access block is removed
 resource "aws_s3_bucket_policy" "mywebapp" {
   bucket = aws_s3_bucket.mywebapp-bucket.id
-  policy = jsonencode(
-    {
-      Version = "2012-10-17",
-      Statement = [
-        {
-          Sid       = "PublicReadGetObject",
-          Effect    = "Allow",
-          Principal = "*",
-          Action    = "s3:GetObject",
-          Resource  = "${aws_s3_bucket.mywebapp-bucket.arn}/*"
-        }
-      ]
-    }
-  )
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Sid       = "PublicReadGetObject",
+        Effect    = "Allow",
+        Principal = "*",
+        Action    = "s3:GetObject",
+        Resource  = "${aws_s3_bucket.mywebapp-bucket.arn}/*"
+      }
+    ]
+  })
+
+  depends_on = [aws_s3_bucket_public_access_block.example]
 }
 
 resource "aws_s3_bucket_website_configuration" "mywebapp" {
