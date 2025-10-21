@@ -2,12 +2,6 @@
 
 This project demonstrates how to **deploy a static website on AWS S3** using **Terraform** and **GitHub Actions** for automated CI/CD. Any push to the GitHub repository automatically updates the website content.
 
----
-
-## 🔗 Live Website
-[View Live Site](https://mywebapp-bucket-2343792cd5aef1a2.s3.us-east-1.amazonaws.com/index.html)
-
----
 
 ## 🛠 Technologies Used
 - **Terraform** – Infrastructure as Code (IaC)  
