@@ -100,6 +100,14 @@ resource "aws_s3_object" "image_png" {
   etag         = filemd5("./Amanul Hasan.jpg")
 }
 
+resource "aws_s3_object" "resume_pdf" {
+  bucket       = aws_s3_bucket.mywebapp-bucket.bucket
+  source       = "./AmanulHasanResume1.pdf"
+  key          = "AmanulHasanResume1.pdf"
+  content_type = "application/pdf"
+  etag         = filemd5("./AmanulHasanResume1.pdf")
+}
+
 output "name" {
   value = aws_s3_bucket_website_configuration.mywebapp.website_endpoint
 }
