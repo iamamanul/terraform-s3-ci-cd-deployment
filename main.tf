@@ -71,6 +71,9 @@ resource "aws_s3_object" "index_html" {
   source       = "./index.html"
   key          = "index.html"
   content_type = "text/html"
+  etag         = filemd5("./index.html")
+  //etag is used to check if the file has changed and needs to be updated inside. 
+  //source is not enough to check if the file has changed. so we use etag to check if the file has changed or not.  
 }
 
 resource "aws_s3_object" "styles_css" {
@@ -78,6 +81,7 @@ resource "aws_s3_object" "styles_css" {
   source       = "./styles.css"
   key          = "styles.css"
   content_type = "text/css"
+  etag         = filemd5("./styles.css")
 }
 
 resource "aws_s3_object" "script_js" {
@@ -85,6 +89,7 @@ resource "aws_s3_object" "script_js" {
   source       = "./script.js"
   key          = "script.js"
   content_type = "application/javascript"
+  etag         = filemd5("./script.js")
 }
 
 resource "aws_s3_object" "image_png" {
@@ -92,6 +97,7 @@ resource "aws_s3_object" "image_png" {
   source       = "./Amanul Hasan.jpg"
   key          = "Amanul Hasan.jpg"
   content_type = "image/jpg"
+  etag         = filemd5("./Amanul Hasan.jpg")
 }
 
 output "name" {
