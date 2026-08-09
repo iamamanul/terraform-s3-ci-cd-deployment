@@ -19,13 +19,18 @@ override.tf.json
 crash.log
 crash.*.log
 
+# Environment files
+.env
+.env.*
+
+# Terraform CLI config
+.terraformrc
+terraform.rc
+
 # OS/Editor junk
 .DS_Store
 Thumbs.db
-*.jpg  # Or more specific: Amanul Hasan.jpg if you want to target it
 
 # IDE files
 .vscode/
 .idea/
-
-.env

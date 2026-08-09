@@ -1,354 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amanul Hasan - DevSecOps Engineer</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amanul Hasan — DevOps &amp; Platform Engineer</title>
+<meta name="description" content="Amanul Hasan — DevOps & Platform Engineer specializing in Kubernetes, AWS, CI/CD automation and DevSecOps.">
+<meta name="theme-color" content="#090b10">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+<noscript><style>.console-line,.reveal,.reveal-stagger>*{opacity:1!important;transform:none!important;}.console-typed::after{display:none;}</style></noscript>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="bg-animation"></div>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">Amanul Hasan</div>
-            <div class="menu-toggle" id="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Nav -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="logo"><span class="logo-caret">$</span>amanul.sh</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-nav>Home</a></li>
+      <li><a href="#about" data-nav>About</a></li>
+      <li><a href="#skills" data-nav>Skills</a></li>
+      <li><a href="#projects" data-nav>Projects</a></li>
+      <li><a href="#experience" data-nav>Experience</a></li>
+      <li><a href="#contact" data-nav>Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="mobile-progress" aria-hidden="true"><div class="mobile-progress-fill" id="mobileProgressFill"></div></div>
+
+<!-- Pipeline rail (desktop signature element) -->
+<div class="pipeline-rail" id="pipelineRail" aria-hidden="true">
+  <div class="rail-track">
+    <div class="rail-fill" id="railFill"></div>
+    <div class="rail-node" data-rail-for="about" style="top:0%"><span class="rail-label">BUILD</span></div>
+    <div class="rail-node" data-rail-for="skills" style="top:25%"><span class="rail-label">TEST</span></div>
+    <div class="rail-node" data-rail-for="projects" style="top:50%"><span class="rail-label">SCAN</span></div>
+    <div class="rail-node" data-rail-for="experience" style="top:75%"><span class="rail-label">DEPLOY</span></div>
+    <div class="rail-node" data-rail-for="contact" style="top:100%"><span class="rail-label">MONITOR</span></div>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <canvas id="net-canvas" aria-hidden="true"></canvas>
+  <div class="container hero-inner">
+
+    <div class="hero-copy">
+      <p class="hero-eyebrow">$ whoami<span class="caret" aria-hidden="true"></span></p>
+      <h1 class="hero-title">Amanul Hasan</h1>
+      <p class="hero-role">DevOps &amp; Platform Engineer <span class="accent">/</span> Cloud &amp; Kubernetes</p>
+      <p class="hero-tagline">I build infrastructure that doesn't page anyone at 3AM — automated pipelines, observable systems, and cloud environments that fail predictably and recover fast.</p>
+
+      <div class="status-pill"><span class="status-dot"></span> open to DevOps · Cloud · SRE roles</div>
+
+      <div class="hero-ctas btn-group">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+
+      <div class="hero-stats" id="heroStats">
+        <div class="stat">
+          <div class="stat-value"><span data-count="1" data-decimals="0">0</span><span class="unit">+</span></div>
+          <div class="stat-label">YRS IN PRODUCTION</div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="profile-image-container">
-                <div class="profile-image-wrapper">
-                    <img src="Amanul Hasan.jpg" alt="Amanul Hasan" class="profile-image" id="profileImage">
-                    <div class="profile-ring"></div>
-                    <div class="profile-ring-2"></div>
-                </div>
-            </div>
-            <h1 class="hero-title">Amanul Hasan</h1>
-            <p class="hero-subtitle">DevSecOps Engineer & Full Stack Developer</p>
-            <p class="hero-description">
-                Passionate about designing secure CI/CD pipelines and scalable cloud infrastructures. 
-                Specializing in automation, containerization, and cloud-native technologies.
-            </p>
-            <div class="btn-group">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-            </div>
-            <div class="social-links">
-                <a href="https://github.com/iamamanul" target="_blank" class="social-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/amanul-hasan-9a204a2b5" target="_blank" class="social-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                </a>
-                <a href="mailto:amanulmat@gmail.com" class="social-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                </a>
-            </div>
+        <div class="stat">
+          <div class="stat-value"><span data-count="15" data-decimals="0">0</span><span class="unit">%</span></div>
+          <div class="stat-label">MTTR REDUCTION</div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I'm a B.Tech Information Technology student at Bhagwan Parshuram Institute of Technology, 
-                        passionate about DevSecOps and Full Stack Development. With hands-on experience in building 
-                        secure CI/CD pipelines and scalable cloud infrastructures, I specialize in automation and 
-                        cloud-native technologies.
-                    </p>
-                    <p>
-                        My expertise spans across GitHub Actions, AWS, Azure, Terraform, Docker, Kubernetes, and 
-                        modern development frameworks like React.js and Node.js. I'm committed to enhancing system 
-                        reliability, security, and automation in every project I undertake.
-                    </p>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <strong>Location:</strong> New Delhi, India
-                        </div>
-                        <div class="info-item">
-                            <strong>Email:</strong> amanulmat@gmail.com
-                        </div>
-                        <div class="info-item">
-                            <strong>Phone:</strong> +91-8595465329
-                        </div>
-                        <div class="info-item">
-                            <strong>Languages:</strong> Hindi, English, Urdu
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="stat">
+          <div class="stat-value"><span data-count="3" data-decimals="0">0</span></div>
+          <div class="stat-label">CLOUD PLATFORMS</div>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section section-alt" id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>DevOps & Cloud</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Linux</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Azure</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Jenkins</span>
-                        <span class="skill-tag">Kubernetes</span>
-                        <span class="skill-tag">Terraform</span>
-                        <span class="skill-tag">Ansible</span>
-                        <span class="skill-tag">CI/CD</span>
-                        <span class="skill-tag">GitHub Actions</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Monitoring & Security</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Prometheus</span>
-                        <span class="skill-tag">Grafana</span>
-                        <span class="skill-tag">ArgoCD</span>
-                        <span class="skill-tag">Trivy</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Express.js</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">Next.js</span>
-                        <span class="skill-tag">Tailwind CSS</span>
-                        <span class="skill-tag">SQL</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">JIRA</span>
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Git</span>
-                    </div>
-                </div>
-            </div>
+        <div class="stat">
+          <div class="stat-value"><span data-count="2" data-decimals="0">0</span></div>
+          <div class="stat-label">ORGS SHIPPED TO PROD</div>
         </div>
-    </section>
+      </div>
 
-    <!-- Projects Section -->
-    <section class="section" id="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 6v6l4 2"></path>
-                        </svg>
-                    </div>
-                    <h3>End-to-End DevSecOps Implementation</h3>
-                    <p>
-                        Implemented an automated DevSecOps pipeline integrating CI/CD, security scanning, and monitoring. 
-                        Used Terraform for infrastructure automation and ArgoCD for GitOps-based continuous deployment.
-                    </p>
-                    <div class="project-tech">
-                        <span>GitHub Actions</span>
-                        <span>AWS</span>
-                        <span>Terraform</span>
-                        <span>Docker</span>
-                        <span>Kubernetes</span>
-                        <span>Prometheus</span>
-                        <span>Grafana</span>
-                        <span>Trivy</span>
-                        <span>ArgoCD</span>
-                    </div>
-                    <div class="project-features">
-                        <ul>
-                            <li>Automated CI/CD pipeline with security integration</li>
-                            <li>Infrastructure as Code with Terraform</li>
-                            <li>Real-time observability with Prometheus & Grafana</li>
-                            <li>Container vulnerability scanning with Trivy</li>
-                            <li>GitOps deployment with ArgoCD</li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="hero-social">
+        <a href="https://github.com/iamamanul" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/amanul-hasan-9a204a2b5" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="mailto:amanulmat@gmail.com" class="social-icon" aria-label="Email">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+      </div>
+    </div>
 
-                <div class="project-card">
-                    <div class="project-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>
-                    </div>
-                    <h3>Automated Static Website Deployment on AWS</h3>
-                    <p>
-                        Designed and implemented automated Terraform configuration to provision and host a static website 
-                        on AWS S3 with continuous deployment through GitHub Actions.
-                    </p>
-                    <div class="project-tech">
-                        <span>Terraform</span>
-                        <span>AWS S3</span>
-                        <span>GitHub Actions</span>
-                        <span>CI/CD</span>
-                        <span>IaC</span>
-                    </div>
-                    <div class="project-features">
-                        <ul>
-                            <li>Automated infrastructure provisioning with Terraform</li>
-                            <li>Static website hosting on AWS S3</li>
-                            <li>Automated HTML/CSS uploads via Terraform</li>
-                            <li>GitHub Actions workflow for continuous deployment</li>
-                            <li>Infrastructure validation and planning automation</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <div class="hero-console">
+      <div class="console-window">
+        <div class="window-chrome">
+          <span class="window-dot red"></span><span class="window-dot amber"></span><span class="window-dot green"></span>
+          <span class="window-chrome-title">visitor@portfolio: ~</span>
         </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="section section-alt" id="experience">
-        <div class="container">
-            <h2 class="section-title">Experience & Education</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Software Engineer Intern</h3>
-                        <h4>Zn Softech</h4>
-                        <p class="timeline-date">June 2025 - August 2025</p>
-                        <ul>
-                            <li>Contributed to front-end development using React.js and Tailwind CSS</li>
-                            <li>Improved UX consistency across components</li>
-                            <li>Containerized applications for deployment</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>B.Tech - Information Technology</h3>
-                        <h4>Bhagwan Parshuram Institute of Technology</h4>
-                        <p class="timeline-date">2022 - 2026</p>
-                        <p>Current Percentage: 70.5%</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>12th Grade</h3>
-                        <h4>Syed Abid Hussain Senior Secondary School, JMI</h4>
-                        <p class="timeline-date">2021</p>
-                        <p>Percentage: 87.6%</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>10th Grade</h3>
-                        <h4>Syed Abid Hussain Senior Secondary School, JMI</h4>
-                        <p class="timeline-date">2019</p>
-                        <p>Percentage: 90.5%</p>
-                    </div>
-                </div>
-            </div>
+        <div class="console-body" id="consoleBody">
+          <div class="console-line" data-line="0"><span class="console-prompt">visitor@portfolio</span><span class="console-path">:~$</span> <span class="console-typed" data-text="whoami"></span>
+            <span class="console-output" data-out="amanul-hasan — devops &amp; platform engineer"></span>
+          </div>
+          <div class="console-line" data-line="1"><span class="console-prompt">visitor@portfolio</span><span class="console-path">:~$</span> <span class="console-typed" data-text="uptime"></span>
+            <span class="console-output" data-out="1+ years · <span class='ok'>99.9%</span> availability"></span>
+          </div>
+          <div class="console-line" data-line="2"><span class="console-prompt">visitor@portfolio</span><span class="console-path">:~$</span> <span class="console-typed" data-text="kubectl get incidents --status=resolved"></span>
+            <span class="console-output" data-out="MTTR reduced <span class='ok'>15%</span> via faster RCA"></span>
+          </div>
+          <div class="console-line" data-line="3"><span class="console-prompt">visitor@portfolio</span><span class="console-path">:~$</span> <span class="console-typed" data-text="status"></span>
+            <span class="console-output" data-out="<span class='ok'>● online</span> — open to opportunities"></span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <p class="contact-intro">
-                    I'm always open to discussing new projects, opportunities, or partnerships. 
-                    Feel free to reach out!
-                </p>
-                <div class="contact-grid">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                        </div>
-                        <h3>Email</h3>
-                        <a href="mailto:amanulmat@gmail.com">amanulmat@gmail.com</a>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                        </div>
-                        <h3>Phone</h3>
-                        <a href="tel:+918595465329">+91-8595465329</a>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                        </div>
-                        <h3>Location</h3>
-                        <p>New Delhi, India</p>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                            </svg>
-                        </div>
-                        <h3>Portfolio</h3>
-                        <a href="https://portfoliogameamanul.vercel.app/" target="_blank">View Portfolio</a>
-                    </div>
-                </div>
-            </div>
+  </div>
+
+  <div class="scroll-cue"><span class="scroll-cue-line" aria-hidden="true"></span>SCROLL</div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-main">
+        <div class="section-head reveal">
+          <p class="eyebrow">STAGE_01 // ABOUT</p>
+          <h2 class="section-title">Currently deployed to production</h2>
+          <p class="section-sub">The short version: I keep infrastructure running, and I'm still in school while I do it.</p>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Amanul Hasan. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://github.com/iamamanul" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/amanul-hasan-9a204a2b5" target="_blank">LinkedIn</a>
-                <a href="mailto:amanulmat@gmail.com">Email</a>
-            </div>
+        <div class="about-text reveal">
+          <p>I'm a final-year <strong>B.Tech Information Technology</strong> student at Bhagwan Parshuram Institute of Technology, and I've spent the last year-plus working as a DevOps engineer alongside my degree — not after it.</p>
+          <p>Right now I'm at <strong>NEC Corporation India</strong>, running production Kubernetes and OpenShift, chasing down P1/P2 incidents, and cutting MTTR through faster root-cause analysis. Before that, at <strong>Zn Softech</strong>, I built the CI/CD and Terraform foundations from the ground up — pipelines, provisioning, monitoring, all of it.</p>
+          <p>The thread running through both: fewer manual steps, faster feedback loops, and systems that are boring in the best possible way — predictable, observable, and quick to recover when something breaks.</p>
         </div>
-    </footer>
+      </div>
 
-    <script src="script.js"></script>
+      <div class="about-side">
+        <div class="profile-card reveal">
+          <div class="window-chrome">
+            <span class="window-dot red"></span><span class="window-dot amber"></span><span class="window-dot green"></span>
+            <span class="window-chrome-title">whoami.jpg</span>
+            <span class="profile-live"><span class="status-dot"></span>LIVE</span>
+          </div>
+          <div class="profile-frame">
+            <div class="profile-photo">
+              <img class="profile-img" src="Amanul Hasan.jpg" alt="Portrait of Amanul Hasan" loading="lazy">
+            <span class="profile-scan" aria-hidden="true"></span>
+            <span class="profile-corner tl" aria-hidden="true"></span>
+            <span class="profile-corner tr" aria-hidden="true"></span>
+            <span class="profile-corner bl" aria-hidden="true"></span>
+            <span class="profile-corner br" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="profile-caption">
+            <span class="profile-name">Amanul Hasan</span>
+            <span class="profile-role">// DevOps Engineer<span class="blink-cursor">_</span></span>
+          </div>
+        </div>
+
+        <div class="env-block reveal">
+          <div class="window-chrome">
+            <span class="window-dot red"></span><span class="window-dot amber"></span><span class="window-dot green"></span>
+            <span class="window-chrome-title">about.env</span>
+          </div>
+          <div class="env-body">
+            <p class="env-comment"># runtime configuration</p>
+            <div class="env-line"><span class="env-key">LOCATION</span><span class="env-eq">=</span><span class="env-value">"New Delhi, India"</span></div>
+            <div class="env-line"><span class="env-key">EMAIL</span><span class="env-eq">=</span><span class="env-value">"amanulmat@gmail.com"</span></div>
+            <div class="env-line"><span class="env-key">PHONE</span><span class="env-eq">=</span><span class="env-value">"+91 85954 65329"</span></div>
+            <div class="env-line"><span class="env-key">CGPA</span><span class="env-eq">=</span><span class="env-value">"8.03 / 10"</span></div>
+            <div class="env-line"><span class="env-key">FOCUS</span><span class="env-eq">=</span><span class="env-value">"DevOps · Cloud · DevSecOps"</span></div>
+            <div class="env-line"><span class="env-key">STATUS</span><span class="env-eq">=</span><span class="env-value">open_to_work=true</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="section section-alt" id="skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">STAGE_02 // SKILLS</p>
+      <h2 class="section-title">The toolchain</h2>
+      <p class="section-sub">Everything I reach for regularly, grouped the way I'd actually organize a runbook.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="tab-list" id="tabList" role="tablist" aria-label="Skill categories">
+        <button class="tab-btn" role="tab" id="tab-cloud" aria-controls="panel-cloud" aria-selected="true" data-tab="cloud">Cloud &amp; Infra</button>
+        <button class="tab-btn" role="tab" id="tab-containers" aria-controls="panel-containers" aria-selected="false" data-tab="containers" tabindex="-1">Containers &amp; Orchestration</button>
+        <button class="tab-btn" role="tab" id="tab-cicd" aria-controls="panel-cicd" aria-selected="false" data-tab="cicd" tabindex="-1">CI/CD &amp; Automation</button>
+        <button class="tab-btn" role="tab" id="tab-security" aria-controls="panel-security" aria-selected="false" data-tab="security" tabindex="-1">Security &amp; Networking</button>
+        <button class="tab-btn" role="tab" id="tab-monitoring" aria-controls="panel-monitoring" aria-selected="false" data-tab="monitoring" tabindex="-1">Monitoring</button>
+        <button class="tab-btn" role="tab" id="tab-data" aria-controls="panel-data" aria-selected="false" data-tab="data" tabindex="-1">Databases &amp; Tools</button>
+      </div>
+
+      <div class="skill-window">
+        <div class="window-chrome">
+          <span class="window-dot red"></span><span class="window-dot amber"></span><span class="window-dot green"></span>
+          <span class="window-chrome-title" id="skillWindowTitle">cat skills/cloud.yaml</span>
+        </div>
+
+        <div class="tab-panel is-active" id="panel-cloud" role="tabpanel" aria-labelledby="tab-cloud" data-panel="cloud">
+          <div class="chip-grid">
+            <span class="chip">AWS EC2</span><span class="chip">AWS S3</span><span class="chip">AWS RDS</span>
+            <span class="chip">AWS EKS</span><span class="chip">AWS IAM</span><span class="chip">CloudFront</span>
+            <span class="chip">Auto Scaling</span><span class="chip">ALB / WAF</span><span class="chip">Azure Fundamentals</span>
+            <span class="chip">Terraform</span><span class="chip">Ansible</span><span class="chip">IaaS / PaaS</span>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel-containers" role="tabpanel" aria-labelledby="tab-containers" data-panel="containers">
+          <div class="chip-grid">
+            <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">OpenShift</span>
+            <span class="chip">Helm</span><span class="chip">ArgoCD</span><span class="chip">GitOps</span>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel-cicd" role="tabpanel" aria-labelledby="tab-cicd" data-panel="cicd">
+          <div class="chip-grid">
+            <span class="chip">Jenkins</span><span class="chip">GitHub Actions</span><span class="chip">GitLab CI</span>
+            <span class="chip">Release Engineering</span><span class="chip">Shell Scripting</span><span class="chip">Python</span><span class="chip">Bash</span>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel-security" role="tabpanel" aria-labelledby="tab-security" data-panel="security">
+          <div class="chip-grid">
+            <span class="chip">Trivy</span><span class="chip">SonarQube</span><span class="chip">Vulnerability Assessment</span>
+            <span class="chip">Container Security</span><span class="chip">DNS</span><span class="chip">TCP/IP</span>
+            <span class="chip">Load Balancing</span><span class="chip">Security Groups</span>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel-monitoring" role="tabpanel" aria-labelledby="tab-monitoring" data-panel="monitoring">
+          <div class="chip-grid">
+            <span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">ELK Stack</span>
+            <span class="chip">Alerting</span><span class="chip">KPI Monitoring</span>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel-data" role="tabpanel" aria-labelledby="tab-data" data-panel="data">
+          <div class="chip-grid">
+            <span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span>
+            <span class="chip">ElasticSearch</span><span class="chip">Git</span><span class="chip">Linux</span>
+            <span class="chip">Jira</span><span class="chip">Agile / Scrum</span><span class="chip">C++</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">STAGE_03 // PROJECTS</p>
+      <h2 class="section-title">Things I've shipped</h2>
+      <p class="section-sub">Two builds that show the full loop — provision, secure, deploy, observe.</p>
+    </div>
+
+    <div class="projects-grid reveal-stagger">
+      <article class="project-card">
+        <div class="window-chrome">
+          <span class="window-dot red"></span><span class="window-dot amber"></span><span class="window-dot green"></span>
+          <span class="window-chrome-title">devsecops-pipeline/</span>
+        </div>
+        <div class="project-body">
+          <div class="project-badges">
+            <span class="badge-stage"><span class="dot"></span>BUILD</span>
+            <span class="badge-stage"><span class="dot"></span>SCAN</span>
+            <span class="badge-stage"><span class="dot"></span>DEPLOY</span>
+            <span class="badge-stage"><span class="dot"></span>MONITOR</span>
+          </div>
+          <h3 class="project-title">End-to-End DevSecOps Implementation</h3>
+          <p class="project-desc">An automated pipeline that treats security scanning as a first-class step, not an afterthought — CI/CD, vulnerability scanning, and monitoring wired together end to end.</p>
+          <div class="project-tech">
+            <span class="chip">GitHub Actions</span><span class="chip">AWS</span><span class="chip">Terraform</span>
+            <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Trivy</span><span class="chip">ArgoCD</span>
+          </div>
+          <ul class="project-features">
+            <li>Automated CI/CD with integrated security scanning at every stage</li>
+            <li>Infrastructure as Code with Terraform for reproducible environments</li>
+            <li>Container vulnerability scanning with Trivy before anything ships</li>
+            <li>Real-time observability via Prometheus &amp; Grafana</li>
+            <li>GitOps-based continuous deployment with ArgoCD</li>
+          </ul>
+          <a href="https://github.com/iamamanul" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="window-chrome">
+          <span class="window-dot red"></span><span class="window-dot amber"></span><span class="window-dot green"></span>
+          <span class="window-chrome-title">static-site-tf/</span>
+        </div>
+        <div class="project-body">
+          <div class="project-badges">
+            <span class="badge-stage"><span class="dot"></span>BUILD</span>
+            <span class="badge-stage"><span class="dot"></span>DEPLOY</span>
+          </div>
+          <h3 class="project-title">Automated Static Site Deployment on AWS</h3>
+          <p class="project-desc">A fully hands-off path from commit to hosted site — Terraform provisions the infrastructure, GitHub Actions ships every change.</p>
+          <div class="project-tech">
+            <span class="chip">Terraform</span><span class="chip">AWS S3</span><span class="chip">GitHub Actions</span>
+            <span class="chip">CI/CD</span><span class="chip">IaC</span>
+          </div>
+          <ul class="project-features">
+            <li>Fully automated infrastructure provisioning with Terraform</li>
+            <li>Static website hosting on AWS S3 with optimized configuration</li>
+            <li>Automated asset uploads driven entirely by Terraform</li>
+            <li>GitHub Actions workflow: init → validate → plan → apply on every commit</li>
+          </ul>
+          <a href="https://github.com/iamamanul" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="section section-alt" id="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">STAGE_04 // EXPERIENCE</p>
+      <h2 class="section-title">Commit history</h2>
+      <p class="section-sub">Career, logged the way I log everything else.</p>
+    </div>
+
+    <div class="commit-log reveal">
+
+      <div class="commit">
+        <div class="commit-node"></div>
+        <div class="commit-card">
+          <div class="commit-meta"><span class="commit-hash">#a3f9c1e</span><span>March 2026 → Present</span><span class="commit-tag">WORK</span></div>
+          <h3 class="commit-msg">DevOps Intern @ NEC Corporation India</h3>
+          <p class="commit-org">Noida</p>
+          <ul class="commit-diff">
+            <li>Managed production Kubernetes and OpenShift deployments using Docker and Helm</li>
+            <li>Resolved P1/P2 production incidents through root cause analysis, cutting MTTR by 15%</li>
+            <li>Built and maintained CI/CD pipelines with Jenkins</li>
+            <li>Configured monitoring, alerting and dashboards with Prometheus, Grafana and ELK</li>
+            <li>Ran log analysis and networking troubleshooting across environments</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="commit">
+        <div class="commit-node"></div>
+        <div class="commit-card">
+          <div class="commit-meta"><span class="commit-hash">#7d1b402</span><span>May 2025 → March 2026</span><span class="commit-tag">WORK</span></div>
+          <h3 class="commit-msg">DevOps Intern @ Zn Softech Pvt Ltd</h3>
+          <p class="commit-org">New Delhi</p>
+          <ul class="commit-diff">
+            <li>Automated AWS infrastructure provisioning using Terraform</li>
+            <li>Built and maintained Jenkins CI/CD pipelines for build, test and deploy</li>
+            <li>Containerized applications with Docker and deployed on Kubernetes</li>
+            <li>Implemented proactive monitoring with Prometheus and Grafana</li>
+            <li>Automated operational tasks with Bash and Python</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="commit is-edu">
+        <div class="commit-node"></div>
+        <div class="commit-card">
+          <div class="commit-meta"><span class="commit-hash">#2e88f6a</span><span>2022 → 2026</span><span class="commit-tag is-edu">EDU</span></div>
+          <h3 class="commit-msg">B.Tech, Information Technology</h3>
+          <p class="commit-org">Bhagwan Parshuram Institute of Technology · Rohini, Delhi</p>
+          <p class="commit-note">CGPA: 8.03 / 10</p>
+        </div>
+      </div>
+
+      <div class="commit is-edu">
+        <div class="commit-node"></div>
+        <div class="commit-card">
+          <div class="commit-meta"><span class="commit-hash">#9c04d17</span><span>2021</span><span class="commit-tag is-edu">EDU</span></div>
+          <h3 class="commit-msg">12th Grade</h3>
+          <p class="commit-org">Syed Abid Hussain Senior Secondary School, JMI</p>
+          <p class="commit-note">Percentage: 87.6%</p>
+        </div>
+      </div>
+
+      <div class="commit is-edu">
+        <div class="commit-node"></div>
+        <div class="commit-card">
+          <div class="commit-meta"><span class="commit-hash">#5f30e8b</span><span>2019</span><span class="commit-tag is-edu">EDU</span></div>
+          <h3 class="commit-msg">10th Grade</h3>
+          <p class="commit-org">Syed Abid Hussain Senior Secondary School, JMI</p>
+          <p class="commit-note">Percentage: 90.5%</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">STAGE_05 // CONTACT</p>
+      <h2 class="section-title">Let's talk</h2>
+      <p class="section-sub">Open to DevOps, Cloud Engineering and SRE roles. Reach out however works for you.</p>
+    </div>
+
+    <div class="status-banner reveal"><span class="status-dot"></span> STATUS: <strong>ONLINE</strong> — deployed and accepting new opportunities</div>
+
+    <div class="contact-grid reveal-stagger">
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </div>
+        <div>
+          <p class="contact-label">EMAIL</p>
+          <p class="contact-value"><a href="mailto:amanulmat@gmail.com">amanulmat@gmail.com</a></p>
+        </div>
+        <button class="copy-btn" data-copy="amanulmat@gmail.com">copy</button>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        </div>
+        <div>
+          <p class="contact-label">PHONE</p>
+          <p class="contact-value"><a href="tel:+918595465329">+91 85954 65329</a></p>
+        </div>
+        <button class="copy-btn" data-copy="+918595465329">copy</button>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <div>
+          <p class="contact-label">LOCATION</p>
+          <p class="contact-value">New Delhi, India</p>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </div>
+        <div>
+          <p class="contact-label">LINKEDIN</p>
+          <p class="contact-value"><a href="https://www.linkedin.com/in/amanul-hasan-9a204a2b5" target="_blank" rel="noopener">/in/amanul-hasan</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-status"><span class="status-dot"></span> SYSTEM NOMINAL · © 2026 Amanul Hasan</div>
+    <div class="uptime-counter">session uptime: <span class="val" id="uptimeVal">00:00:00</span></div>
+    <div class="footer-links">
+      <a href="https://github.com/iamamanul" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/amanul-hasan-9a204a2b5" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:amanulmat@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
