@@ -26,6 +26,7 @@
   const navbar = $('#navbar');
   const menuToggle = $('#menuToggle');
   const navLinks = $('#navLinks');
+  const mobileNavOverlay = $('#mobileNavOverlay');
 
   function setNavScrolled() {
     if (!navbar) return;
@@ -33,20 +34,49 @@
   }
   setNavScrolled();
 
-  function closeMobileMenu() {
+  function updateMobileMenu(isActive) {
     if (!menuToggle || !navLinks) return;
-    menuToggle.classList.remove('active');
-    navLinks.classList.remove('active');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+    menuToggle.classList.toggle('active', isActive);
+    navLinks.classList.toggle('active', isActive);
+    if (mobileNavOverlay) mobileNavOverlay.classList.toggle('is-visible', isActive);
+    menuToggle.setAttribute('aria-expanded', String(isActive));
+    document.body.style.overflow = isActive ? 'hidden' : '';
+  }
+
+  function closeMobileMenu() {
+    updateMobileMenu(false);
   }
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
-      const isActive = menuToggle.classList.toggle('active');
-      navLinks.classList.toggle('active', isActive);
-      menuToggle.setAttribute('aria-expanded', String(isActive));
-      document.body.style.overflow = isActive ? 'hidden' : '';
+      const isActive = !menuToggle.classList.contains('active');
+      updateMobileMenu(isActive);
+    });
+
+    if (mobileNavOverlay) {
+      mobileNavOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    navLinks.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    navLinks.addEventListener('touchstart', (event) => {
+      const touch = event.changedTouches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    }, { passive: true });
+
+    navLinks.addEventListener('touchend', (event) => {
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - touchStartX;
+      const deltaY = touch.clientY - touchStartY;
+      if (deltaX > 50 && Math.abs(deltaY) < 60 && navLinks.classList.contains('active')) {
+        closeMobileMenu();
+      }
     });
 
     $$('a', navLinks).forEach((link) => link.addEventListener('click', closeMobileMenu));

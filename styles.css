@@ -336,6 +336,23 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
   transition: width 0.1s linear;
 }
 
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: min(78vw, 320px);
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.18);
+  z-index: 1050;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+.mobile-nav-overlay.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* ---------- Pipeline rail (desktop signature element) ---------- */
 .pipeline-rail {
   position: fixed;
@@ -1016,17 +1033,19 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
     background: rgba(9, 11, 16, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: center;
-    gap: 2rem;
-    padding: 2rem 2.5rem;
+    gap: 1.7rem;
+    padding: 2.3rem 1.85rem;
     transform: translateX(100%);
     transition: transform 0.45s var(--ease);
     border-left: 1px solid var(--border);
+    z-index: 1200;
+    touch-action: pan-y;
   }
   .nav-links.active { transform: translateX(0); }
-  .nav-links a { font-size: 1rem; }
-  .menu-toggle { display: flex; }
+  .nav-links a { font-size: 1rem; width: 100%; }
+  .menu-toggle { display: flex; z-index: 1210; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 
