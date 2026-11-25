@@ -92,7 +92,7 @@
           <div class="stat-label">CLOUD PLATFORMS</div>
         </div>
         <div class="stat">
-          <div class="stat-value"><span data-count="2" data-decimals="0">0</span></div>
+          <div class="stat-value"><span data-count="3" data-decimals="0">0</span></div>
           <div class="stat-label">ORGS SHIPPED TO PROD</div>
         </div>
       </div>
@@ -150,9 +150,17 @@
         </div>
 
         <div class="about-text reveal">
-          <p>I'm a final-year <strong>B.Tech Information Technology</strong> student at Bhagwan Parshuram Institute of Technology, and I've spent the last year-plus working as a DevOps engineer alongside my degree — not after it.</p>
-          <p>Right now I'm at <strong>NEC Corporation India</strong>, running production Kubernetes and OpenShift, chasing down P1/P2 incidents, and cutting MTTR through faster root-cause analysis. Before that, at <strong>Zn Softech</strong>, I built the CI/CD and Terraform foundations from the ground up — pipelines, provisioning, monitoring, all of it.</p>
-          <p>The thread running through both: fewer manual steps, faster feedback loops, and systems that are boring in the best possible way — predictable, observable, and quick to recover when something breaks.</p>
+          <p>DevOps Engineer who builds, scales and keeps large data platforms and cloud infrastructure running reliably.</p>
+          <p>I work across <strong>GCP, AWS and Kubernetes</strong>, running distributed databases, real-time data pipelines and analytics platforms that serve high-volume production traffic.</p>
+          <p><strong>What I do:</strong></p>
+          <p><strong>Data platform engineering:</strong> running and scaling multi-cluster ClickHouse, with blue/green data releases, query routing and zero-downtime rollouts.</p>
+          <p><strong>Pipeline reliability:</strong> keeping large batch and streaming pipelines (Flink CDC → Apache Doris) healthy, on time and observable from start to finish.</p>
+          <p><strong>Cloud and Kubernetes:</strong> deploying, scaling and tuning workloads on GKE and GCE, and planning compute and storage capacity.</p>
+          <p><strong>Automation:</strong> replacing manual work with scripts, health checks, runbooks and CI-driven changes.</p>
+          <p><strong>Observability:</strong> building monitoring and alerting with Zabbix, PagerDuty and Loki so problems surface before users notice.</p>
+          <p><strong>Root-cause analysis:</strong> tracing production failures to their real cause, such as replication lag, lock contention, connection-pool exhaustion and data-sync breaks, and fixing them permanently rather than patching.</p>
+          <p><strong>Cost and capacity:</strong> storage audits and optimisation that freed 600+ GB of production disk.</p>
+          <p>I also handle critical production incidents across <strong>MySQL/MariaDB, ProxySQL and Dragonfly/Redis</strong>, staying calm and working from data.</p>
         </div>
       </div>
 
@@ -351,7 +359,21 @@
       <div class="commit">
         <div class="commit-node"></div>
         <div class="commit-card">
-          <div class="commit-meta"><span class="commit-hash">#a3f9c1e</span><span>March 2026 → Present</span><span class="commit-tag">WORK</span></div>
+          <div class="commit-meta"><span class="commit-hash">#c8e45b2</span><span>October 2026 → Present</span><span class="commit-tag">WORK</span></div>
+          <h3 class="commit-msg">DevOps Engineer @ Brightage</h3>
+          <ul class="commit-diff">
+            <li>Handled P0/P1 production incidents and found root causes for 20+ of them across MySQL/MariaDB replication, metadata locks, ProxySQL, Dragonfly and Kubernetes (GCP/AWS); wrote runbooks and SOPs for the team</li>
+            <li>Supported MariaDB → Flink CDC → Apache Doris pipelines and fixed sync and replica-lag issues using read-only diagnostic scripts</li>
+            <li>Onboarded to DCX (Data Cube X), a ClickHouse-based search data platform, and wrote an end-to-end architecture guide for the team</li>
+            <li>Ran a fleet-wide disk audit and freed 600+ GB, including fixing a broken Zabbix partition cron that took a host from 93% to 10% disk use; shipped automation fixes through Gerrit</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="commit">
+        <div class="commit-node"></div>
+        <div class="commit-card">
+          <div class="commit-meta"><span class="commit-hash">#a3f9c1e</span><span>March 2026 → October 2026</span><span class="commit-tag">WORK</span></div>
           <h3 class="commit-msg">DevOps Intern @ NEC Corporation India</h3>
           <p class="commit-org">Noida</p>
           <ul class="commit-diff">
