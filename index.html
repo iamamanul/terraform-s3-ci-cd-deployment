@@ -35,8 +35,8 @@
       <li><a href="#home" data-nav>Home</a></li>
       <li><a href="#about" data-nav>About</a></li>
       <li><a href="#skills" data-nav>Skills</a></li>
-      <li><a href="#projects" data-nav>Projects</a></li>
       <li><a href="#experience" data-nav>Experience</a></li>
+      <li><a href="#projects" data-nav>Projects</a></li>
       <li><a href="#contact" data-nav>Contact</a></li>
     </ul>
   </div>
@@ -51,8 +51,8 @@
     <div class="rail-fill" id="railFill"></div>
     <div class="rail-node" data-rail-for="about" style="top:0%"><span class="rail-label">BUILD</span></div>
     <div class="rail-node" data-rail-for="skills" style="top:25%"><span class="rail-label">TEST</span></div>
-    <div class="rail-node" data-rail-for="projects" style="top:50%"><span class="rail-label">SCAN</span></div>
-    <div class="rail-node" data-rail-for="experience" style="top:75%"><span class="rail-label">DEPLOY</span></div>
+    <div class="rail-node" data-rail-for="experience" style="top:50%"><span class="rail-label">SCAN</span></div>
+    <div class="rail-node" data-rail-for="projects" style="top:75%"><span class="rail-label">DEPLOY</span></div>
     <div class="rail-node" data-rail-for="contact" style="top:100%"><span class="rail-label">MONITOR</span></div>
   </div>
 </div>
@@ -152,7 +152,7 @@
         <div class="about-text reveal">
           <p>DevOps Engineer who builds, scales and keeps large data platforms and cloud infrastructure running reliably.</p>
           <p>I work across <strong>GCP, AWS and Kubernetes</strong>, running distributed databases, real-time data pipelines and analytics platforms that serve high-volume production traffic.</p>
-          <p>My day-to-day spans <strong>data platform engineering</strong> (running and scaling multi-cluster ClickHouse with blue/green releases, query routing and zero-downtime rollouts), <strong>pipeline reliability</strong> (keeping Flink CDC → Apache Doris batch and streaming pipelines healthy, on time and observable end to end), and <strong>cloud and Kubernetes</strong> operations on GKE and GCE, including compute and storage capacity planning. I replace manual work with <strong>automation</strong> through scripts, health checks, runbooks and CI-driven changes, and build <strong>observability</strong> with Zabbix, PagerDuty and Loki so problems surface before users notice. When production breaks, I trace it to the real cause, whether replication lag, lock contention, connection-pool exhaustion or a data-sync break, and fix it permanently instead of patching it, across <strong>MySQL/MariaDB, ProxySQL and Dragonfly/Redis</strong>, staying calm and working from data. I also keep cost and capacity in check: storage audits and optimisation that freed 600+ GB of production disk.</p>
+          <p>My day-to-day spans <strong>data platform engineering</strong> (scaling multi-cluster ClickHouse with blue/green releases and zero-downtime rollouts), <strong>pipeline reliability</strong> (keeping Flink CDC → Apache Doris pipelines healthy and observable), and <strong>cloud and Kubernetes</strong> operations on GKE and GCE, including capacity planning. I replace manual work with <strong>automation</strong>, and build <strong>observability</strong> with Zabbix, PagerDuty and Loki so problems surface before users notice. When production breaks, I trace it to the real cause, such as replication lag, lock contention or connection-pool exhaustion, and fix it permanently across <strong>MySQL/MariaDB, ProxySQL and Dragonfly/Redis</strong>. I also keep costs in check, with storage audits that freed 600+ GB of production disk.</p>
         </div>
       </div>
 
@@ -269,79 +269,11 @@
   </div>
 </section>
 
-<!-- Projects -->
-<section class="section" id="projects">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">STAGE_03 // PROJECTS</p>
-      <h2 class="section-title">Things I've shipped</h2>
-      <p class="section-sub">Two builds that show the full loop — provision, secure, deploy, observe.</p>
-    </div>
-
-    <div class="projects-grid reveal-stagger">
-      <article class="project-card">
-        <div class="window-chrome">
-          <span class="window-dot red"></span><span class="window-dot amber"></span><span class="window-dot green"></span>
-          <span class="window-chrome-title">devsecops-pipeline/</span>
-        </div>
-        <div class="project-body">
-          <div class="project-badges">
-            <span class="badge-stage"><span class="dot"></span>BUILD</span>
-            <span class="badge-stage"><span class="dot"></span>SCAN</span>
-            <span class="badge-stage"><span class="dot"></span>DEPLOY</span>
-            <span class="badge-stage"><span class="dot"></span>MONITOR</span>
-          </div>
-          <h3 class="project-title">End-to-End DevSecOps Implementation</h3>
-          <p class="project-desc">An automated pipeline that treats security scanning as a first-class step, not an afterthought — CI/CD, vulnerability scanning, and monitoring wired together end to end.</p>
-          <div class="project-tech">
-            <span class="chip">GitHub Actions</span><span class="chip">AWS</span><span class="chip">Terraform</span>
-            <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Trivy</span><span class="chip">ArgoCD</span>
-          </div>
-          <ul class="project-features">
-            <li>Automated CI/CD with integrated security scanning at every stage</li>
-            <li>Infrastructure as Code with Terraform for reproducible environments</li>
-            <li>Container vulnerability scanning with Trivy before anything ships</li>
-            <li>Real-time observability via Prometheus &amp; Grafana</li>
-            <li>GitOps-based continuous deployment with ArgoCD</li>
-          </ul>
-          <a href="https://github.com/iamamanul" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="window-chrome">
-          <span class="window-dot red"></span><span class="window-dot amber"></span><span class="window-dot green"></span>
-          <span class="window-chrome-title">static-site-tf/</span>
-        </div>
-        <div class="project-body">
-          <div class="project-badges">
-            <span class="badge-stage"><span class="dot"></span>BUILD</span>
-            <span class="badge-stage"><span class="dot"></span>DEPLOY</span>
-          </div>
-          <h3 class="project-title">Automated Static Site Deployment on AWS</h3>
-          <p class="project-desc">A fully hands-off path from commit to hosted site — Terraform provisions the infrastructure, GitHub Actions ships every change.</p>
-          <div class="project-tech">
-            <span class="chip">Terraform</span><span class="chip">AWS S3</span><span class="chip">GitHub Actions</span>
-            <span class="chip">CI/CD</span><span class="chip">IaC</span>
-          </div>
-          <ul class="project-features">
-            <li>Fully automated infrastructure provisioning with Terraform</li>
-            <li>Static website hosting on AWS S3 with optimized configuration</li>
-            <li>Automated asset uploads driven entirely by Terraform</li>
-            <li>GitHub Actions workflow: init → validate → plan → apply on every commit</li>
-          </ul>
-          <a href="https://github.com/iamamanul" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
 <!-- Experience -->
-<section class="section section-alt" id="experience">
+<section class="section" id="experience">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">STAGE_04 // EXPERIENCE</p>
+      <p class="eyebrow">STAGE_03 // EXPERIENCE</p>
       <h2 class="section-title">Commit history</h2>
       <p class="section-sub">Career, logged the way I log everything else.</p>
     </div>
@@ -424,6 +356,74 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="section section-alt" id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">STAGE_04 // PROJECTS</p>
+      <h2 class="section-title">Things I've shipped</h2>
+      <p class="section-sub">Two builds that show the full loop — provision, secure, deploy, observe.</p>
+    </div>
+
+    <div class="projects-grid reveal-stagger">
+      <article class="project-card">
+        <div class="window-chrome">
+          <span class="window-dot red"></span><span class="window-dot amber"></span><span class="window-dot green"></span>
+          <span class="window-chrome-title">devsecops-pipeline/</span>
+        </div>
+        <div class="project-body">
+          <div class="project-badges">
+            <span class="badge-stage"><span class="dot"></span>BUILD</span>
+            <span class="badge-stage"><span class="dot"></span>SCAN</span>
+            <span class="badge-stage"><span class="dot"></span>DEPLOY</span>
+            <span class="badge-stage"><span class="dot"></span>MONITOR</span>
+          </div>
+          <h3 class="project-title">End-to-End DevSecOps Implementation</h3>
+          <p class="project-desc">An automated pipeline that treats security scanning as a first-class step, not an afterthought — CI/CD, vulnerability scanning, and monitoring wired together end to end.</p>
+          <div class="project-tech">
+            <span class="chip">GitHub Actions</span><span class="chip">AWS</span><span class="chip">Terraform</span>
+            <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Trivy</span><span class="chip">ArgoCD</span>
+          </div>
+          <ul class="project-features">
+            <li>Automated CI/CD with integrated security scanning at every stage</li>
+            <li>Infrastructure as Code with Terraform for reproducible environments</li>
+            <li>Container vulnerability scanning with Trivy before anything ships</li>
+            <li>Real-time observability via Prometheus &amp; Grafana</li>
+            <li>GitOps-based continuous deployment with ArgoCD</li>
+          </ul>
+          <a href="https://github.com/iamamanul" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="window-chrome">
+          <span class="window-dot red"></span><span class="window-dot amber"></span><span class="window-dot green"></span>
+          <span class="window-chrome-title">static-site-tf/</span>
+        </div>
+        <div class="project-body">
+          <div class="project-badges">
+            <span class="badge-stage"><span class="dot"></span>BUILD</span>
+            <span class="badge-stage"><span class="dot"></span>DEPLOY</span>
+          </div>
+          <h3 class="project-title">Automated Static Site Deployment on AWS</h3>
+          <p class="project-desc">A fully hands-off path from commit to hosted site — Terraform provisions the infrastructure, GitHub Actions ships every change.</p>
+          <div class="project-tech">
+            <span class="chip">Terraform</span><span class="chip">AWS S3</span><span class="chip">GitHub Actions</span>
+            <span class="chip">CI/CD</span><span class="chip">IaC</span>
+          </div>
+          <ul class="project-features">
+            <li>Fully automated infrastructure provisioning with Terraform</li>
+            <li>Static website hosting on AWS S3 with optimized configuration</li>
+            <li>Automated asset uploads driven entirely by Terraform</li>
+            <li>GitHub Actions workflow: init → validate → plan → apply on every commit</li>
+          </ul>
+          <a href="https://github.com/iamamanul" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
